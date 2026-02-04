@@ -140,6 +140,13 @@
                 <elementReference>$Record.Sales_Rep__c</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varRecipients</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.LastModifiedById</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Has_Notification_Type</targetReference>
         </connector>
@@ -162,6 +169,38 @@
             </conditions>
             <connector>
                 <targetReference>Has_Notification_Recipient</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Manual_Gold_Change</name>
+        <label>Manual Gold Change</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <defaultConnector>
+            <targetReference>Determine_Customer_Tier</targetReference>
+        </defaultConnector>
+        <rules>
+            <name>Manual_Gold_Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Customer_Tier__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Gold</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Tier__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Gold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Has_Sales_Rep</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -269,13 +308,6 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>$Record.Sales_Rep__r.Email</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>Send_Custom_Notification_Action</targetReference>
             </connector>
@@ -321,10 +353,10 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.Customer_Tier__c</leftValueReference>
-                <operator>EqualTo</operator>
+                <leftValueReference>$Record.Total_Amount_Spent__c</leftValueReference>
+                <operator>GreaterThan</operator>
                 <rightValue>
-                    <stringValue>Gold</stringValue>
+                    <numberValue>15000.0</numberValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -422,7 +454,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Determine_Customer_Tier</targetReference>
+            <targetReference>Manual_Gold_Change</targetReference>
         </connector>
         <filterLogic>1 OR 2</filterLogic>
         <filters>
