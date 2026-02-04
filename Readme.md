@@ -1,4 +1,5 @@
-#Desafio EveryDrive 
+# Desafio EveryDrive 
+
 ## Estrutura (dados)
 ### Objetos e campos
 - Padrão: `Account`, `Contact`
@@ -245,4 +246,5 @@ AI REVOLUTION COMPANY © Breathe in the *FUTURE AIRCOMPANY.AI*
 Best Minds
 
 2026
+
 
