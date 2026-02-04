@@ -37,10 +37,10 @@
 | ![LWC](evidencias/01-lwc-account-page.png) | ![Flow](evidencias/05-flow-overview.png) | ![Trigger](evidencias/07-rental-trigger.png) |
 
 **Destaques**
-- ✅ LWC com medalhas por classificação
-- ✅ Flow automatizando Bronze/Silver/Gold
-- ✅ Triggers/Handlers com validações e follow-up
-- ✅ Testes Apex + cobertura ≥ 75%
+- ⭐ LWC com medalhas por classificação
+- 🔁 Flow automatizando Bronze/Silver/Gold
+- 🧩 Triggers/Handlers com validações e follow-up
+- 🧪 Testes Apex + cobertura ≥ 75%
 
 ## Estrutura (dados)
 ### Objetos e campos
