@@ -233,7 +233,7 @@ Script de apoio (executado via Execute Anonymous ou `sf apex run`):
 
 ---
 
-## Reflexão (slide)
+## Reflexão 
 Mais fácil:
 - Montar o LWC e integrar com Apex: a separação entre UI (LWC) e regras (Apex/Flow) deixou o componente simples e objetivo.
 - Publicar a medalha na Account Record Page e validar visualmente o resultado (Static Resource + URL gerada no controller).
@@ -255,7 +255,7 @@ Aprendizados / o que melhoraria:
 
 ---
 
-## Planejamento (slide)
+## Planejamento 
 Estratégia (ordem):
 1) Modelagem (objetos/campos)
 2) Flow (automação de tier)
@@ -288,6 +288,7 @@ AI REVOLUTION COMPANY © Breathe in the *FUTURE AIRCOMPANY.AI*
 Best Minds
 
 2026
+
 
 
 
