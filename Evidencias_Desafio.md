@@ -1,24 +1,4 @@
-# Entrega – Desafio EveryDrive (arquivo único)
-
-Este arquivo reúne (em um só lugar) o conteúdo necessário para montar o PDF de entrega: prints/evidências, trechos de código e explicações, reflexão e planejamento.
-
-Org usada:
-- `<usuario-da-org>`
-
----
-
-## Checklist de entrega (AirPortal)
-- Enviar um arquivo PDF (até 20MB) contendo:
-  - Prints das telas das funcionalidades
-  - Trechos de código (Apex, LWC, Flow) com explicação
-  - Slide de Evidências
-  - Slide de Reflexão
-  - Slide de Planejamento
-- Prazo: 06/02/2026 23:59
-- Nome do arquivo: `Desafio <Seu Nome Completo>.pdf`
-
----
-
+#Desafio EveryDrive 
 ## Estrutura (dados)
 ### Objetos e campos
 - Padrão: `Account`, `Contact`
@@ -62,7 +42,6 @@ Observação importante:
 
 **Prints sugeridos (Flow):**
 ![Flow - visão geral](evidencias/05-flow-overview.png)
-![Flow - critérios/condições](evidencias/06-flow-criteria.png)
 
 Texto para o slide:
 > O Flow classifica automaticamente o cliente em Bronze/Silver/Gold com base em `Total_Amount_Spent__c`. Quando há transição para Gold, o Flow dispara notificações (chatter + sino) para o vendedor responsável.
@@ -183,7 +162,6 @@ Validate (check-only) do pacote do desafio:
 
 **Prints sugeridos:**
 ![SF CLI - testes com coverage](evidencias/03-sf-tests-coverage.png)
-![SF CLI - deploy validate](evidencias/04-sf-deploy-validate.png)
 
 Texto para o slide:
 > Criei classes de teste cobrindo controller e triggers/handlers. Em seguida rodei testes com `--code-coverage` e validei o deploy em modo check-only com `RunSpecifiedTests`, garantindo que o pacote do desafio cumpre a regra mínima de 75%.
@@ -195,7 +173,7 @@ Script de apoio (executado via Execute Anonymous ou `sf apex run`):
 - `scripts/apex/debug_everydrive.apex`
 
 **Print sugerido (Execution Log):**
-![Execute Anonymous Log](evidencias/02-execute-anonymous-log.png)
+![Execute Anonymous Log](evidencias//04-sf-deploy-validate.png)
 
 Texto para o slide:
 > Para evidenciar execução ponta-a-ponta, usei um script de debug que cria uma Account, chama os métodos da controller e realiza DML em `Rental__c` para disparar a trigger, confirmando via log a criação da Task de follow-up.
@@ -262,13 +240,9 @@ Cronograma (exemplo, 3 dias):
 
 ---
 
-## Onde colocar os prints
-Coloque as imagens na pasta `evidencias/` com os nomes usados acima.
-
----
-
 AI REVOLUTION COMPANY © Breathe in the *FUTURE AIRCOMPANY.AI*
 
 Best Minds
 
 2026
+
