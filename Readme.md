@@ -1,4 +1,32 @@
-# Desafio EveryDrive 
+<div align="center">
+  <img src="https://www.salesforce.com/content/dam/web/en_us/www/images/press-room/brand/salesforce-logo.png" alt="Salesforce" width="180" />
+  <img src="https://trailhead.salesforce.com/assets/trailhead-logo.svg" alt="Trailhead" width="150" style="margin-left:12px" />
+
+  # Desafio EveryDrive — AI/R Company
+
+  _Projeto Salesforce (SFDX) com automações, LWC, triggers e testes._
+
+  <p>
+    <img alt="Apex" src="https://img.shields.io/badge/Apex-00A1E0?style=flat&logo=salesforce&logoColor=white" />
+    <img alt="LWC" src="https://img.shields.io/badge/LWC-1E90FF?style=flat&logo=lightning&logoColor=white" />
+    <img alt="Flow" src="https://img.shields.io/badge/Flow-2E7D32?style=flat&logo=flow&logoColor=white" />
+    <img alt="SFDX" src="https://img.shields.io/badge/SFDX-546E7A?style=flat" />
+  </p>
+</div>
+
+---
+
+## Sumário
+- [Estrutura (dados)](#estrutura-dados)
+- [Automação (Flow)](#automação-flow)
+- [LWC – Medalha por classificação](#lwc--medalha-por-classificação)
+- [Trigger – Rental__c (validações + follow-up)](#trigger--rental__c-validações--follow-up)
+- [Trigger – Account (e-mail quando vira Gold)](#trigger--account-e-mail-quando-vira-gold)
+- [Testes e Coverage (SF CLI)](#testes-e-coverage-sf-cli)
+- [Debug (Developer Console / Execute Anonymous)](#debug-developer-console--execute-anonymous)
+- [Relatórios e Painéis (se aplicável)](#relatórios-e-painéis-se-aplicável)
+- [Reflexão (slide)](#reflexão-slide)
+- [Planejamento (slide)](#planejamento-slide)
 
 ## Estrutura (dados)
 ### Objetos e campos
