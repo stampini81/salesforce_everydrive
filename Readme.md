@@ -14,10 +14,10 @@
   - `Status__c` (Planejada, Em Andamento, Concluída/Completed, Cancelada)
   - `Value__c`
 
-**Print sugerido (Setup → Object Manager → Rental__c):**
+**(Setup → Object Manager → Rental__c):**
 ![Objeto Rental__c e campos](evidencias/11-rental-object-fields.png)
 
-Texto para o slide:
+
 > Modelei o desafio usando `Account` como cliente, com campos de acompanhamento (tier, total gasto, qtd. locações e vendedor responsável). Para as locações, criei o objeto `Rental__c` com datas, status e valor, permitindo automações e validações de negócio.
 
 ---
@@ -41,10 +41,10 @@ Flow: **Account Customer Tier Flow** (Record-Triggered em `Account`, After Save)
 Observação importante:
 - As notificações (chatter/sininho/e-mail) dependem do campo `Sales_Rep__c` estar preenchido no cliente com um usuário interno ativo.
 
-**Prints sugeridos (Flow):**
+
 ![Flow - visão geral](evidencias/05-flow-overview.png)
 
-Texto para o slide:
+
 > O Flow classifica automaticamente o cliente em Bronze/Silver/Gold com base em `Total_Amount_Spent__c`. Quando há transição para Gold, o Flow dispara notificações (chatter + sino) para o vendedor responsável.
 
 ---
@@ -53,7 +53,7 @@ Texto para o slide:
 ### Static Resource
 Static Resource: **medals** (zip com `gold.png`, `silver.png`, `bronze.png` na raiz)
 
-**Print sugerido (Setup → Static Resources):**
+**(Setup → Static Resources):**
 ![Static Resource medals](evidencias/12-static-resource-medals.png)
 
 ### Apex (Controller)
@@ -83,10 +83,10 @@ import getCustomerTier from '@salesforce/apex/EveryDriveCustomerTierController.g
 ### Publicação
 - Adicionado na **Account Record Page** (App EveryDrive)
 
-**Print sugerido (LWC renderizado na Account):**
+**(LWC renderizado na Account):**
 ![LWC na Account Record Page](evidencias/01-lwc-account-page.png)
 
-Texto para o slide:
+
 > Para evidenciar o tier visualmente, criei um LWC que consulta Apex para buscar nome/tier do cliente e monta a URL da imagem no Static Resource. Assim o componente fica leve e o mapeamento de tier (PT/EN) é centralizado.
 
 ---
@@ -116,11 +116,11 @@ Regras implementadas:
 Observação importante:
 - Se `Sales_Rep__c` estiver vazio ou apontar para usuário externo/guest, a Task não é criada para esse usuário.
 
-**Prints sugeridos:**
+
 ![Setup - Apex Trigger RentalTrigger](evidencias/07-rental-trigger-setup.png)
 ![Task criada após status concluído](evidencias/08-task-created.png)
 
-Texto para o slide:
+
 > A trigger de `Rental__c` valida dados antes de salvar (valor e consistência de datas) e, quando a locação muda para status concluído, cria automaticamente uma Task de follow-up para o vendedor responsável, garantindo ação proativa após a conclusão.
 
 ---
@@ -139,12 +139,11 @@ Classe: `force-app/main/default/classes/AccountCustomerTierNotifier.cls`
 
 Objetivo:
 - Quando `Customer_Tier__c` muda para Gold, enviar e-mail para o vendedor (`Sales_Rep__c`)
-
-**Prints sugeridos:**
+- 
 ![Setup - Apex Trigger AccountTrigger](evidencias/09-account-trigger-setup.png)
 ![Evidência de e-mail/execução](evidencias/10-email-sent.png)
 
-Texto para o slide:
+
 > Para notificar o vendedor em um marco importante, implementei uma trigger em `Account` que chama uma classe responsável por montar e enviar um e-mail quando o cliente atinge o tier Gold.
 
 ---
@@ -161,10 +160,10 @@ Rodar testes do desafio (com coverage):
 Validate (check-only) do pacote do desafio:
 `sf project deploy validate --target-org everydrive --source-dir force-app --test-level RunSpecifiedTests --tests EveryDriveCustomerTierControllerTest --tests AccountCustomerTierNotifierTest --tests RentalTriggerHandlerTest --wait 60`
 
-**Prints sugeridos:**
+
 ![SF CLI - testes com coverage](evidencias/03-sf-tests-coverage.png)
 
-Texto para o slide:
+
 > Criei classes de teste cobrindo controller e triggers/handlers. Em seguida rodei testes com `--code-coverage` e validei o deploy em modo check-only com `RunSpecifiedTests`, garantindo que o pacote do desafio cumpre a regra mínima de 75%.
 
 ---
@@ -173,20 +172,20 @@ Texto para o slide:
 Script de apoio (executado via Execute Anonymous ou `sf apex run`):
 - `scripts/apex/debug_everydrive.apex`
 
-**Print sugerido (Execution Log):**
+**(Execution Log):**
 ![Execute Anonymous Log](evidencias//04-sf-deploy-validate.png)
 
-Texto para o slide:
+
 > Para evidenciar execução ponta-a-ponta, usei um script de debug que cria uma Account, chama os métodos da controller e realiza DML em `Rental__c` para disparar a trigger, confirmando via log a criação da Task de follow-up.
 
 ---
 
 ## Relatórios e Painéis (se aplicável)
-**Prints sugeridos:**
+
 ![Report - Sales Performance](evidencias/13-report-sales-performance.png)
 ![Dashboard - Sales Dashboard](evidencias/14-dashboard-sales.png)
 
-Texto para o slide:
+
 > Para acompanhamento gerencial, preparei (quando aplicável) um report de performance e um dashboard para visualizar distribuição por tier e resultados por vendedor.
 
 ---
@@ -246,5 +245,6 @@ AI REVOLUTION COMPANY © Breathe in the *FUTURE AIRCOMPANY.AI*
 Best Minds
 
 2026
+
 
 
