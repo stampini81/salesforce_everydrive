@@ -117,7 +117,7 @@ Observação importante:
 - Se `Sales_Rep__c` estiver vazio ou apontar para usuário externo/guest, a Task não é criada para esse usuário.
 
 
-![Setup - Apex Trigger RentalTrigger](evidencias/07-rental-trigger-setup.png)
+![Setup - Apex Trigger RentalTrigger](evidencias/07-rental-trigger.png)
 
 ![Task criada após status concluído](evidencias/08-task-created.png)
 
@@ -246,6 +246,7 @@ AI REVOLUTION COMPANY © Breathe in the *FUTURE AIRCOMPANY.AI*
 Best Minds
 
 2026
+
 
 
 
