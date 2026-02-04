@@ -16,7 +16,7 @@
 
 ---
 
-## Sumário
+## 📌 Sumário
 - [Estrutura (dados)](#estrutura-dados)
 - [Automação (Flow)](#automação-flow)
 - [LWC – Medalha por classificação](#lwc--medalha-por-classificação)
@@ -30,7 +30,7 @@
 
 ---
 
-## Visão geral rápida
+## ✨ Visão geral rápida
 
 | LWC na Account | Flow de Tier | Trigger de Rental |
 | --- | --- | --- |
@@ -42,8 +42,8 @@
 - 🧩 Triggers/Handlers com validações e follow-up
 - 🧪 Testes Apex + cobertura ≥ 75%
 
-## Estrutura (dados)
-### Objetos e campos
+## 🧱 Estrutura (dados)
+### 📦 Objetos e campos
 - Padrão: `Account`, `Contact`
 - Campos em `Account`:
   - `Customer_Tier__c` (Gold / Silver / Bronze)
@@ -64,23 +64,23 @@
 
 ---
 
-## Automação (Flow)
+## 🔁 Automação (Flow)
 Flow: **Account Customer Tier Flow** (Record-Triggered em `Account`, After Save)
 
-### Regras
+### 📐 Regras
 - Bronze: até 5.000
 - Silver: 5.001 até 15.000
 - Gold: acima de 15.000
 
-### Critério “virou Gold”
+### 🥇 Critério “virou Gold”
 - `$Record.Customer_Tier__c == Gold`
 - `$Record__Prior.Customer_Tier__c != Gold`
 
-### Ações
+### ✅ Ações
 - Chatter post (Gold_Tier_Alert)
 - Custom Notification para `Sales_Rep__c`
 
-Observação importante:
+⚠️ Observação importante:
 - As notificações (chatter/sininho/e-mail) dependem do campo `Sales_Rep__c` estar preenchido no cliente com um usuário interno ativo.
 
 
@@ -91,14 +91,14 @@ Observação importante:
 
 ---
 
-## LWC – Medalha por classificação
-### Static Resource
+## 🏅 LWC – Medalha por classificação
+### 🧩 Static Resource
 Static Resource: **medals** (zip com `gold.png`, `silver.png`, `bronze.png`)
 
 **(Setup → Static Resources):**
 ![Static Resource medals](evidencias/12-static-resource-medals.png)
 
-### Apex (Controller)
+### ⚙️ Apex (Controller)
 Arquivo: `force-app/main/default/classes/EveryDriveCustomerTierController.cls`
 
 Trecho (mapeamento do tier → imagem):
@@ -110,7 +110,7 @@ if (normalizedTier == 'gold') fileName = 'gold.png';
 return '/resource/medals/' + fileName;
 ```
 
-### LWC
+### 💻 LWC
 Arquivos:
 - `force-app/main/default/lwc/everyDriveCustomerTierBadge/everyDriveCustomerTierBadge.html`
 - `force-app/main/default/lwc/everyDriveCustomerTierBadge/everyDriveCustomerTierBadge.js`
@@ -122,7 +122,7 @@ import getAccountName from '@salesforce/apex/EveryDriveCustomerTierController.ge
 import getCustomerTier from '@salesforce/apex/EveryDriveCustomerTierController.getCustomerTier';
 ```
 
-### Publicação
+### 🚀 Publicação
 - Adicionado na **Account Record Page** (App EveryDrive)
 
 **(LWC renderizado na Account):**
@@ -133,7 +133,7 @@ import getCustomerTier from '@salesforce/apex/EveryDriveCustomerTierController.g
 
 ---
 
-## Trigger – Rental__c (validações + follow-up)
+## 🧪 Trigger – Rental__c (validações + follow-up)
 Trigger: `force-app/main/default/triggers/RentalTrigger.trigger`
 
 Trecho (delegação para handler):
@@ -149,13 +149,13 @@ if (Trigger.isAfter && (Trigger.isInsert || Trigger.isUpdate)) {
 
 Handler: `force-app/main/default/classes/RentalTriggerHandler.cls`
 
-Regras implementadas:
+✅ Regras implementadas:
 - `Value__c > 0`
 - `End_Date__c >= Start_Date__c`
 - Status concluído exige `End_Date__c`
 - Ao virar concluído, cria `Task` para `Sales_Rep__c` da `Account`
 
-Observação importante:
+⚠️ Observação importante:
 - Se `Sales_Rep__c` estiver vazio ou apontar para usuário externo/guest, a Task não é criada para esse usuário.
 
 
@@ -168,7 +168,7 @@ Observação importante:
 
 ---
 
-## Trigger – Account (e-mail quando vira Gold)
+## ✉️ Trigger – Account (e-mail quando vira Gold)
 Trigger: `force-app/main/default/triggers/AccountTrigger.trigger`
 
 Trecho:
@@ -180,7 +180,7 @@ if (Trigger.isAfter && Trigger.isUpdate) {
 
 Classe: `force-app/main/default/classes/AccountCustomerTierNotifier.cls`
 
-Objetivo:
+🎯 Objetivo:
 - Quando `Customer_Tier__c` muda para Gold, enviar e-mail para o vendedor (`Sales_Rep__c`)
 - 
 ![Setup - Apex Trigger AccountTrigger](evidencias/09-account-trigger-setup.png)
@@ -191,16 +191,16 @@ Objetivo:
 
 ---
 
-## Testes e Coverage (SF CLI)
-### Test classes criadas
+## 🧪 Testes e Coverage (SF CLI)
+### 🧩 Test classes criadas
 - `EveryDriveCustomerTierControllerTest`
 - `AccountCustomerTierNotifierTest`
 - `RentalTriggerHandlerTest`
 
-Rodar testes do desafio (com coverage):
+▶️ Rodar testes do desafio (com coverage):
 `sf apex run test --target-org everydrive --class-names EveryDriveCustomerTierControllerTest --class-names AccountCustomerTierNotifierTest --class-names RentalTriggerHandlerTest --result-format human --wait 60 --code-coverage`
 
-Validate (check-only) do pacote do desafio:
+🧾 Validate (check-only) do pacote do desafio:
 `sf project deploy validate --target-org everydrive --source-dir force-app --test-level RunSpecifiedTests --tests EveryDriveCustomerTierControllerTest --tests AccountCustomerTierNotifierTest --tests RentalTriggerHandlerTest --wait 60`
 
 
@@ -211,7 +211,7 @@ Validate (check-only) do pacote do desafio:
 
 ---
 
-## Debug (Developer Console / Execute Anonymous)
+## 🐞 Debug (Developer Console / Execute Anonymous)
 Script de apoio (executado via Execute Anonymous ou `sf apex run`):
 - `scripts/apex/debug_everydrive.apex`
 
@@ -223,7 +223,7 @@ Script de apoio (executado via Execute Anonymous ou `sf apex run`):
 
 ---
 
-## Relatórios e Painéis (se aplicável)
+## 📊 Relatórios e Painéis (se aplicável)
 
 ![Report - Sales Performance](evidencias/13-report-sales-performance.png)
 ![Dashboard - Sales Dashboard](evidencias/14-dashboard-sales.png)
@@ -233,21 +233,21 @@ Script de apoio (executado via Execute Anonymous ou `sf apex run`):
 
 ---
 
-## Reflexão 
-Mais fácil:
+## 🧠 Reflexão 
+✅ Mais fácil:
 - Montar o LWC e integrar com Apex: a separação entre UI (LWC) e regras (Apex/Flow) deixou o componente simples e objetivo.
 - Publicar a medalha na Account Record Page e validar visualmente o resultado (Static Resource + URL gerada no controller).
 - Estruturar triggers no padrão “thin trigger + handler” (mais legível, fácil de testar e de evoluir).
 - Rodar testes com `sf` CLI e obter relatórios de coverage rapidamente para evidenciar o requisito de 75%.
 
-Mais desafiador:
+⚠️ Mais desafiador:
 - Garantir compatibilidade com picklists restritas (ex.: valores de `Status__c` e `Customer_Tier__c`) sem “hardcode” frágil; exigiu usar `Schema.describe` nos testes.
 - Alinhar automações que dependem de dados do org (ex.: `Sales_Rep__c` preenchido, usuário interno ativo, deliverability de e-mail) para que Task + sininho + e-mail realmente apareçam.
 - Validar deploy em org com “ruídos” externos (classes/testes inválidos que não fazem parte do desafio): foi necessário ajustar a estratégia de validação para `RunSpecifiedTests`.
 - Cobertura de trigger/handler: além de testar o “caminho feliz”, precisei cobrir transições (insert vs update, mudança de status para concluído) e cenários inválidos.
 - Debug ponta-a-ponta: comprovar execução entre Flow, triggers e LWC exigiu script de Execute Anonymous e leitura cuidadosa de logs.
 
-Aprendizados / o que melhoraria:
+📝 Aprendizados / o que melhoraria:
 - Normalizar o conceito de tier (ex.: “Gold/Ouro”) em um ponto único e reutilizável (ex.: Custom Metadata/Custom Label), evitando divergência entre Flow, Apex e UI.
 - Tornar condições operacionais explícitas (ex.: fallback quando `Sales_Rep__c` estiver vazio, ou roteamento para `Account.OwnerId`/Queue) para não “silenciar” a criação de Task/avisos.
 - Reduzir acoplamento do Flow com strings fixas (usar recursos/constantes) e adicionar validações/safeguards para quando dados essenciais não estiverem preenchidos.
@@ -255,8 +255,8 @@ Aprendizados / o que melhoraria:
 
 ---
 
-## Planejamento 
-Estratégia (ordem):
+## 🗺️ Planejamento 
+🧭 Estratégia (ordem):
 1) Modelagem (objetos/campos)
 2) Flow (automação de tier)
 3) UI (LWC + Static Resource)
@@ -264,19 +264,19 @@ Estratégia (ordem):
 5) Testes, coverage e validate
 6) Evidências (prints) + PDF
 
-Ferramentas:
+🧰 Ferramentas:
 - VS Code + Salesforce Extensions
 - `sf` CLI
 - Developer Console (Execute Anonymous + Logs)
 - Git (controle de versão local) para manter evolução incremental
 
-Como me organizei (prática):
+📅 Como me organizei (prática):
 - Entregas pequenas e incrementais: após cada etapa (Flow, Apex, LWC), validei no org com um cenário simples.
 - Testes junto com a implementação: sempre que criei/ajustei regra em Apex/trigger, adicionei teste cobrindo o cenário.
 - Validação contínua: rodei `sf apex run test --code-coverage` para confirmar cobertura e usei `deploy validate` para simular a entrega.
 - Evidências em paralelo: conforme cada funcionalidade ficava pronta, já separava os prints sugeridos no checklist.
 
-Cronograma (exemplo, 3 dias):
+⏱️ Cronograma (exemplo, 3 dias):
 - Dia 1 (base): modelagem de dados + Flow + primeiro ciclo de validação no org
 - Dia 2 (feature): Apex (controller/handlers) + LWC + publicação na página + debug via Execute Anonymous
 - Dia 3 (qualidade/entrega): testes (cobertura e cenários), `deploy validate`, coleta final de evidências e montagem do PDF
