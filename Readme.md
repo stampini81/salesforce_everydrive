@@ -118,6 +118,7 @@ Observação importante:
 
 
 ![Setup - Apex Trigger RentalTrigger](evidencias/07-rental-trigger-setup.png)
+
 ![Task criada após status concluído](evidencias/08-task-created.png)
 
 
@@ -245,6 +246,7 @@ AI REVOLUTION COMPANY © Breathe in the *FUTURE AIRCOMPANY.AI*
 Best Minds
 
 2026
+
 
 
 
