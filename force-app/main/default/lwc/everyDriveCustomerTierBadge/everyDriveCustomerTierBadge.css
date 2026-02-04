@@ -1,0 +1,35 @@
+.tier-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tier-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tier-bronze,
+.tier-silver,
+.tier-gold {
+    width: 80px;
+    height: 80px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.tier-bronze {
+    color: #b06d2f;
+    filter: drop-shadow(0 0 6px rgba(176, 109, 47, 0.6));
+}
+
+.tier-silver {
+    color: #8a8f98;
+    filter: drop-shadow(0 0 6px rgba(138, 143, 152, 0.6));
+}
+
+.tier-gold {
+    color: #d4a017;
+    filter: drop-shadow(0 0 10px rgba(212, 160, 23, 0.8));
+}

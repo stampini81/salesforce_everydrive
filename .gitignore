@@ -1,0 +1,23 @@
+# Salesforce / SFDX
+.sfdx/
+.sf/
+.localdevserver/
+
+# Logs / results / artifacts
+test-results/
+coverage/
+*.log
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Node (if used)
+node_modules/
+
+# Java (if used)
+*.class
+
+# Misc
+.env

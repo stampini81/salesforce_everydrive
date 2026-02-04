@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Customer Tier">
+        <div class="slds-p-around_medium tier-container">
+            <p class="slds-text-heading_small">{accountName}</p>
+            <template if:true={imageUrl}>
+                <div class="tier-content">
+                    <img src={imageUrl} alt="Tier" class={tierClass}/>
+                    <template if:true={tierLabel}>
+                        <span class={tierClass}>{tierLabel}</span>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
