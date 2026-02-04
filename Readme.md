@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://img.icons8.com/?size=100&id=38804&format=png&color=000000" alt="Salesforce" width="180" />
-  <img src="https://sys4b.com.br/trailhead-conheca-a-plataforma-de-capacitacao-do-salesforce/" alt="Trailhead" width="150" style="margin-left:12px" />
+  <img src="evidencias/trailhead.png" alt="Trailhead" width="150" style="margin-left:12px" />
 
   # Desafio EveryDrive — AI/R Company
 
