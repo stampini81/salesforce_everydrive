@@ -51,7 +51,7 @@ Observação importante:
 
 ## LWC – Medalha por classificação
 ### Static Resource
-Static Resource: **medals** (zip com `gold.png`, `silver.png`, `bronze.png` na raiz)
+Static Resource: **medals** (zip com `gold.png`, `silver.png`, `bronze.png`)
 
 **(Setup → Static Resources):**
 ![Static Resource medals](evidencias/12-static-resource-medals.png)
@@ -245,6 +245,7 @@ AI REVOLUTION COMPANY © Breathe in the *FUTURE AIRCOMPANY.AI*
 Best Minds
 
 2026
+
 
 
 
